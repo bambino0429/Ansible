@@ -1,14 +1,18 @@
 ---
 # Install firewalld, so I can open ports
+- name: Install firewalld and open port 80
+  hosts: all
+  sudo: yes
 
-  - name: Install firewalld
+  tasks:
+    - name: Install firewalld
     yum: name=firewalld state=installed
 
-  - name: Start firewalld
+    - name: Start firewalld
     service: name=firewalld state=started enabled=yes
 
-  - name: Insert firewalld rule for nginx
+    - name: Insert firewalld rule for nginx
     firewalld: port=80/tcp permanent=true state=enabled immediate=yes
 
-  - name: Restart firewalld
+    - name: Restart firewalld
     service: name=firewalld state=restarted enabled=yes
