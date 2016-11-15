@@ -6,7 +6,7 @@
 
   tasks:
     - name: Install firewalld
-    yum: name=firewalld state=installed
+    yum: name=firewalld state=latest
 
     - name: Start firewalld
     service: name=firewalld state=started enabled=yes
