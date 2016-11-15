@@ -14,11 +14,6 @@
           name: nginx
           state: latest
 
-      - name: Restart NGINX
-        service:
-          name: nginx
-          state: restarted
-
       - name: Copy NGINX config file from repository
         git: repo=https://github.com/bambino0429/NginxConf.git dest=/etc/nginx/sites-available/default
 
