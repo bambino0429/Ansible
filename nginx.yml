@@ -14,10 +14,10 @@
           name: nginx
           state: latest
 
-      - name: Start NGINX
+      - name: Restart NGINX
         service:
           name: nginx
-          state: started
+          state: restarted
 
 #      - name: Copy NGINX config file
 #        copy: src=files/nginx.conf dest=/etc/nginx/sites-available/default
