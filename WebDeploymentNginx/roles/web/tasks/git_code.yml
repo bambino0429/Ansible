@@ -1,0 +1,5 @@
+---
+# This playbook will copy files from git to respective directories
+
+  - name: Pull the html file to the www directory
+    git: repo={{ repository }} dest=/usr/share/nginx/www update=yes

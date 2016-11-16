@@ -1,0 +1,22 @@
+---
+# Install and configure NGINX
+
+  - name: Install nginx repo rpm
+    yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+  - name: Install nginx
+    yum: name=nginx status=latest
+
+  - name: Install git
+    yum: name=git status=latest
+
+  - name: Create a config file
+    template: src=first_web.conf.j2 dest=/etc/nginx/conf.d/
+
+  # If Apache is installed, change the port for Apache
+  # Change Listen 80 to Listen 8000
+  - name: Change apache config file
+    template: src=httpd.conf.j2 dest=/etc/httpd/conf/ force=yes
+
+  - name: Restart nginx
+    service: name=nginx state=restarted

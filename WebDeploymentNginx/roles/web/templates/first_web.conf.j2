@@ -1,0 +1,12 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+        server_name _;
+
+        error_page    500 502 503 504   /50x.html;
+        
+        location / {
+                root  /usr/share/nginx/www;
+                index index.html index.htm index.php;
+        }
+}

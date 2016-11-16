@@ -1,0 +1,5 @@
+---
+# These will run in all webservers
+  - include: git_code.yml
+  - include: install_nginx.yml
+  - include: setup_firewalld.yml

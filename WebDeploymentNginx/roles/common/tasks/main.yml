@@ -1,0 +1,5 @@
+---
+# These will run on all nodes
+
+  - name: Install firewalld
+    yum: name=firewalld state=latest
