@@ -1,0 +1,18 @@
+---
+# This playbook creates a new directory called foo in the root directory
+# with the permission 0777 (rwx for all users)
+
+  - name: Create a new directory
+    hosts: all
+    become: yes
+
+    tasks:
+      - name: Install tree for better view
+        yum: name=tree state=present
+        
+      - name: Create a directory named foo
+        file:
+          path: /foo/
+          state: directory
+          owner: root
+          mode: 0777
