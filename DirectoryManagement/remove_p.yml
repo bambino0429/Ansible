@@ -9,4 +9,4 @@
       - file:
         path: /foo/
         state: touch
-        mode: "u+rwx, g-rw, o-rwx"
+        mode: "u+rwx, g-wx, o-wx"

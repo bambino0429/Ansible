@@ -1,0 +1,12 @@
+---
+# This playbook changes the permissions for foo directory
+
+  - name: Change permissions to 755
+    hosts: all
+    become: yes
+
+    tasks:
+      - file:
+        path: /foo/
+        state: touch
+        mode: "u+rwx, g+rx, o+rx"
