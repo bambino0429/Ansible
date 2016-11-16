@@ -5,7 +5,7 @@
     service: name=firewalld state=started enabled=yes
 
   - name: Insert firewalld rule for nginx
-    firewalld: port=80/tcp permanent=true state=enabled immediate=yes
+    firewalld: port={{ nginx_port }}/tcp permanent=true state=enabled immediate=yes
 
   - name: Restart firewalld
     service: name=firewalld state=restarted enabled=yes
