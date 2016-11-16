@@ -5,10 +5,10 @@
     yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
   - name: Install nginx
-    yum: name=nginx status=latest
+    yum: name=nginx state=latest
 
   - name: Install git
-    yum: name=git status=latest
+    yum: name=git state=latest
 
   - name: Create a config file
     template: src=first_web.conf.j2 dest=/etc/nginx/conf.d/
