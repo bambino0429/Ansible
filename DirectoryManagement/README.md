@@ -21,3 +21,8 @@
 2 | write only | -w-
 1 | execute only | --x
 0 | none | ---
+
+## Command to check the permissions in terminal :octocat:
+'''
+$ ls -ld directory
+'''
