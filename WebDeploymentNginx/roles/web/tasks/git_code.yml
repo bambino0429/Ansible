@@ -6,7 +6,8 @@
       path: /usr/share/nginx/www/
       state: directory
       owner: iwasakik@msuoc.net
-      mode: "u=rwx, g=r, o=r"
+      mode: 0775
+#      mode: "u=rwx, g=r, o=r"
 
   - name: Pull the html file to the www directory
     git: repo={{ repository }} dest=/usr/share/nginx/www update=yes
