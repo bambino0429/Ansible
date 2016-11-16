@@ -10,6 +10,7 @@ File Permissions
   2. remove_pof: Removes the permissions of the file to 0700
   3. change_pof: Changes the directory permission to 0755
 
+Numerical Permissions from https://en.wikipedia.org/wiki/Chmod
 \# | Permission | rwx
 ---|------------|----
 7 | read, write and execute | rwx
