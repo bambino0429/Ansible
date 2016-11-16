@@ -11,12 +11,12 @@
     yum: name=git state=latest
 
   - name: Create a config file
-    template: src=first_web.conf.j2 dest=/etc/nginx/conf.d/
+    template: src=first_web.conf.j2 dest=/etc/nginx/conf.d/first_web.conf
 
   # If Apache is installed, change the port for Apache
   # Change Listen 80 to Listen 8000
   - name: Change apache config file
-    template: src=httpd.conf.j2 dest=/etc/httpd/conf/ force=yes
+    template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf force=yes
 
   - name: Restart nginx
     service: name=nginx state=restarted
