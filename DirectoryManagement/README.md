@@ -23,6 +23,6 @@
 0 | none | ---
 
 ## Command to check the permissions in terminal :octocat:
-'''javascript
+```
 $ ls -ld directory
-'''
+```
