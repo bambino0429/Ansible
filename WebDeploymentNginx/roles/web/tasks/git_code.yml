@@ -2,7 +2,9 @@
 # This playbook will copy files from git to respective directories
 
   - name: Add www directory in /usr/share/nginx/
-  file: path=usr/share/nginx/www/ state=directory
+  file:
+    path: /usr/share/nginx/www/ 
+    state: directory
     owner: iwasakik@msuoc.net
     mode: "u=rwx, g=r, o=r"
 
