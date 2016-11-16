@@ -1,0 +1,12 @@
+---
+# This playbook removes the permissions for foo directory
+
+  - name: Remove permissions
+    hosts: all
+    become: yes
+
+    tasks:
+      - file:
+        path: /foo/
+        state: touch
+        mode: "u+rwx, g-rw, o-rwx"
