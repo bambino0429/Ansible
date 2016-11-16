@@ -6,7 +6,8 @@
     become: yes
 
     tasks:
-      - file:
+      - name: Change foo permissions to 755
+        file:
         path: /foo/
         state: touch
         mode: "u+rwx, g+rx, o+rx"

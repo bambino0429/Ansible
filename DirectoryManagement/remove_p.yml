@@ -6,7 +6,8 @@
     become: yes
 
     tasks:
-      - file:
-        path: /foo/
-        state: touch
-        mode: "u+rwx, g-wx, o-wx"
+      - name: Remove permissions for foo
+        file:
+          path: /foo/
+          state: touch
+          mode: "u+rwx, g-wx, o-wx"
