@@ -1,0 +1,19 @@
+---
+# This playbook adds EPEL repository to RHEL servers and enable it
+
+  - name: Add and Enable EPEL Repository
+    hosts: linux2
+    become: yes
+
+    tasks:
+      - name: Install EPEL from the website
+        yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=latest
+
+#      - name: Add repository
+#        yum_repository:
+#          name: epel
+#          description: EPEL YUM repo
+#          baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+
+      - name: Install pip for testing
+        yum: name=python-pip enablerepo=epel update_cache=yes state=present

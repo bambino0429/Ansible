@@ -1,6 +1,8 @@
 # Ansible
 
 
-## 1. Deploy a Website to Linux Servers with NGINX
+## 1. WebDeploymentNginx
+Deploy a Website to Linux Servers with NGINX
 
-## 2. Configure Directory and File Permissions
+## 2. DirectoryManagement
+Configure Directory and File Permissions for RHEL7 and Windows Server 2016
