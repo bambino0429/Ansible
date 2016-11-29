@@ -21,11 +21,8 @@
 #          - python-pip
 #          - python-dev
 
-      - name: Install python pip and dev
+      - name: Install python pip
         yum: name=python-pip enablerepo=epel update_cache=yes state=latest
-
-      - name: Install python pip and dev
-        yum: name=python-dev enablerepo=epel update_cache=yes state=latest
 
       - name: Update pip to the latest version
         command: 'pip install --upgrade pip'
