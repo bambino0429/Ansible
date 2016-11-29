@@ -1,0 +1,28 @@
+---
+# This playbook modifies the directory's permissions
+# with the permission 0777 (rwx for all users)
+
+  - name: Modify the folder's permissions
+    hosts: all
+
+    tasks:
+      - name: Remove iwasakik@msuoc.net's full access
+        win_acl:
+          path: 'C:\foo'
+          user: 'iwasakik@msuoc.net'
+          rights: 'FullControl'
+          type: 'allow'
+          state: 'absent'
+          inherit: 'ContainerInherit, ObjectInherit'
+          propagation: 'None'
+
+    tasks:
+      - name: Remove iwasakik@msuoc.net's full access
+        win_acl:
+          path: 'C:\foo'
+          user: 'iwasakik@msuoc.net'
+          rights: 'Read'
+          type: 'allow'
+          state: 'present'
+          inherit: 'ContainerInherit, ObjectInherit'
+          propagation: 'None'

@@ -1,0 +1,22 @@
+---
+# This playbook creates a new directory called foo in C drive
+# with the permission 0777 (rwx for all users)
+
+  - name: Create a new directory
+    hosts: all
+
+    tasks:
+      - name: Create a directory named foo
+        win_file:
+          path: 'C:\foo'
+          state: directory
+
+      - name: Grant iwasakik@msuoc.net full access to the directory foo
+        win_acl:
+          path: 'C:\foo'
+          user: 'iwasakik@msuoc.net'
+          rights: 'FullControl'
+          type: 'allow'
+          state: 'present'
+          inherit: 'ContainerInherit, ObjectInherit'
+          propagation: 'None'

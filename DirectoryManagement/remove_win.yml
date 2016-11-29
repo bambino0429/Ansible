@@ -1,0 +1,11 @@
+---
+# This playbook removes a directory called foo in C drive
+
+  - name: Remove a directory
+    hosts: all
+
+    tasks:
+      - name: Remove the directory named foo
+        win_file:
+          path: 'C:\foo'
+          state: absent
