@@ -15,11 +15,17 @@
 #          description: EPEL YUM repo
 #          baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
 
+#      - name: Install python pip and dev
+#        yum: name={{ item }} enablerepo=epel update_cache=yes state=latest
+#        with_items:
+#          - python-pip
+#          - python-dev
+
       - name: Install python pip and dev
-        yum: name={{ item }} enablerepo=epel update_cache=yes state=latest
-        with_items:
-          - python-pip
-          - python-dev
+        yum: name=python-pip enablerepo=epel update_cache=yes state=latest
+
+      - name: Install python pip and dev
+        yum: name=python-dev enablerepo=epel update_cache=yes state=latest
 
       - name: Update pip to the latest version
         command: 'pip install --upgrade pip'
