@@ -16,4 +16,4 @@
 #          baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
 
       - name: Install pip for testing
-        yum: name=python-pip enablerepo=epel update_cache=yes state=present
+        yum: name=python-pip enablerepo=epel update_cache=yes state=latest
