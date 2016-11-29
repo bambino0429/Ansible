@@ -17,3 +17,6 @@
 
       - name: Install pip for testing
         yum: name=python-pip enablerepo=epel update_cache=yes state=latest
+
+      - name: Update pip to the latest version
+        command: 'pip install --upgrade pip'
