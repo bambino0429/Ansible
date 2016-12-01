@@ -36,11 +36,11 @@
       snapshot_tags:
         Name: "{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
 
-    - name: Extract snapshot id
-      ec2_snapshot_facts:
-        aws_access_key: "{{ akey }}"
-        aws_secret_key: "{{ pkey }}"
-        region: "{{ aws_region }}"
-        filters:
-          "tag:Name":"{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
-      register: snapshots_info
+#    - name: Extract snapshot id
+#      ec2_snapshot_facts:
+#        aws_access_key: "{{ akey }}"
+#        aws_secret_key: "{{ pkey }}"
+#        region: "{{ aws_region }}"
+#        filters:
+#          "tag:Name":"{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
+#      register: snapshots_info
