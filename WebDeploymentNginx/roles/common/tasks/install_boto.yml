@@ -15,3 +15,6 @@
 
   - name: Install boto using pip
     pip: name=boto
+
+  - name: Install boto3 using pip
+    pip: name=boto3
