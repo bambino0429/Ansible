@@ -4,7 +4,7 @@
   - name: Add www directory in /usr/share/nginx/
     file:
       path: /usr/share/nginx/www/
-      state: directory
+      state: director
       owner: iwasakik@msuoc.net
       mode: 0775 # "u=rwx, g=r, o=r"
 
