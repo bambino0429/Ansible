@@ -6,8 +6,20 @@
       path: /usr/share/nginx/www/
       state: directory
       owner: iwasakik@msuoc.net
-      mode: 0775
-#      mode: "u=rwx, g=r, o=r"
+      mode: 0775 # "u=rwx, g=r, o=r"
+
+    ignore_errors: true
+    changed_when: false
+    always_run: true
+    register: add_directory
 
   - name: Pull the html file to the www directory
     git: repo={{ repository }} dest=/usr/share/nginx/www update=yes
+
+    ignore_errors: true
+    register: git_html
+    when: add_directory.failed == false
+
+  - name: Set boolean true if something failed
+    set_fact: failed_git_code=true
+    when: add_directory.failed == true or git_html.failed == true
