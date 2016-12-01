@@ -53,6 +53,8 @@
           aws_access_key: "{{ akey }}"
           aws_secret_key: "{{ pkey }}"
           region: "us-east-1"
+          snapshot_ids:
+            - snap-02b64f2245053d3d8
 #          filters:
 #            "tag:Name": "{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
         register: snapshots_info
