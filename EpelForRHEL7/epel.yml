@@ -13,6 +13,9 @@
         action: debug msg="This instance is a t2.micro"
         when: ansible_ec2_instance_type == "t2.micro"
 
+      - name: Conditional 2
+        action: debug msg=ansible_ec2_instance_id
+
       - name: Install EPEL from the website
         yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=present
 
