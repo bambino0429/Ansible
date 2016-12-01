@@ -35,6 +35,7 @@
       device_name: "{{ ansible_ec2_block_device_mapping_ami }}"
       snapshot_tags:
         Name: "{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
+      last_snapshot_min_age: 60 # for testing
 
 #    - name: Extract snapshot id
 #      ec2_snapshot_facts:
