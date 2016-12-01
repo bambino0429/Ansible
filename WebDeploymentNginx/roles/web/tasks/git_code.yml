@@ -20,13 +20,17 @@
     register: git_html
     when: "'failed: true' not in add_directory"
 
-  - name: Set boolean true if add_dictionary failed
-    set_fact: failed_git_code=true
-    when: "'failed: true' in add_directory"
+#  - name: Set boolean true if add_dictionary failed
+#    set_fact: failed_git_code=true
+#    when: "'failed: true' in add_directory"
+#
+#  - name: Set boolean true if git_html failed
+#    set_fact: failed_git_code=true
+#    when: "'failed: true' in git_html"
 
-  - name: Set boolean true if git_html failed
+  - name: Set boolean true if something failed
     set_fact: failed_git_code=true
-    when: "'failed: true' in git_html"
+    when: "'failed: true' in add_directory or 'failed: true' in git_html"
 
   - name: Set boolean false if nothing failed
     set_fact: failed_git_code=false
