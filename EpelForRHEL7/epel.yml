@@ -54,7 +54,7 @@
         ec2_snapshot_facts:
           aws_access_key: "{{ akey }}"
           aws_secret_key: "{{ pkey }}"
-#        region: "us-east-1"
+          region: "us-east-1"
 #        snapshot_ids:
 #          - snap-02b64f2245053d3d8
 #          filters:
