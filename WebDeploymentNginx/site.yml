@@ -25,9 +25,9 @@
 #    roles:
 #      - db
 
-  - name: In case of emergencies, revert to previous state
-    hosts: all
-    become: yes
-
-    roles:
-      - emergency
+#  - name: In case of emergencies, revert to previous state
+#    hosts: all
+#    become: yes
+#
+#    roles:
+#      - emergency
