@@ -15,7 +15,16 @@
 
       - name: Conditional 2
         action: debug msg="{{ansible_ec2_instance_id}}"
-        
+
+      - name: Extract tags
+        ec2_tag:
+          resource: "{{ansible_ec2_instance_id}}"
+          region: "{{ ansible_ec2_placement_region }}"
+          state: list
+        register: instance_tags
+
+      - debug: var=instance_tags
+
       - name: Install EPEL from the website
         yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=present
 
@@ -34,8 +43,8 @@
       - name: Install python pip
         yum: name=python-pip enablerepo=epel update_cache=yes state=latest
 
-      - name: Update pip to the latest version
-        command: 'pip install --upgrade pip'
+#      - name: Update pip to the latest version
+#        command: 'pip install --upgrade pip'
 
       - name: Install boto using pip
         pip: name=boto
