@@ -33,6 +33,8 @@
       - name: Install boto3 using pip
         pip: name=boto3
 
+
+# Testing AWS EC2 stuff
       - name: Gather facts about this ec2 instance
         action: ec2_facts
 
@@ -52,11 +54,11 @@
         ec2_snapshot_facts:
           aws_access_key: "{{ akey }}"
           aws_secret_key: "{{ pkey }}"
-          region: "us-east-1"
-          snapshot_ids:
-            - snap-02b64f2245053d3d8
+#        region: "us-east-1"
+#        snapshot_ids:
+#          - snap-02b64f2245053d3d8
 #          filters:
 #            "tag:Name": "{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
-        register: snapshots_info
+#        register: snapshots_info
 
-      - debug: var=snapshots_info
+#      - debug: var=snapshots_info
