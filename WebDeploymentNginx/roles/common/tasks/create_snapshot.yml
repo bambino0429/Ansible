@@ -32,7 +32,7 @@
       region: "{{ aws_region }}"
       instance_id: "{{ i_id }}"
       description: "AWS backup snapshot taken on {{ ansible_date_time.date }} at {{ ansible_date_time.time }} before {{ job_description }}"
-      device_name: "{{instance_tags.tags.Name}}"
+      device_name: "{{ ansible_ec2_block_device_mapping_ami }}"
       snapshot_tags:
         Name: "{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
 
