@@ -4,6 +4,13 @@
   - name: Gather facts about this ec2 instance
     action: ec2_facts
 
+# Testing
+#  - name: Conditional
+#    action: debug msg="This instance is a t2.micro"
+#    when: ansible_ec2_instance_type == "t2.micro"
+#  - name: Conditional 2
+#    action: debug msg="{{ansible_ec2_instance_id}}"
+
   - name: Create a variable for instance_id
     set_fact: i_id="{{ ansible_ec2_instance_id }}"
 
