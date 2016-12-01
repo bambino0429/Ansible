@@ -5,19 +5,20 @@
     hosts: linux2
     become: yes
 
-    - name: Extract snapshot id
-      ec2_snapshot_facts:
-        aws_access_key: "{{ akey }}"
-        aws_secret_key: "{{ pkey }}"
-        region: "us-east-1"
-        filters:
-          "tag:Name":"{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
-      register: snapshots_info
+    tasks:
+      - name: Extract snapshot id
+        ec2_snapshot_facts:
+          aws_access_key: "{{ akey }}"
+          aws_secret_key: "{{ pkey }}"
+          region: "us-east-1"
+          filters:
+            "tag:Name":"{{ instance_tags.tags.Name }} ({{ ansible_ec2_block_device_mapping_ami }})"
+        register: snapshots_info
 
-    - debug: var=snapshots_info
+      - debug: var=snapshots_info
 
-    - name: Install EPEL from the website
-      yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=present
+      - name: Install EPEL from the website
+        yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=present
 
 #      - name: Add repository
 #        yum_repository:
@@ -31,11 +32,11 @@
 #          - python-pip
 #          - python-dev
 
-    - name: Install python pip
-      yum: name=python-pip enablerepo=epel update_cache=yes state=latest
+      - name: Install python pip
+        yum: name=python-pip enablerepo=epel update_cache=yes state=latest
 
 #      - name: Update pip to the latest version
 #        command: 'pip install --upgrade pip'
 
-    - name: Install boto using pip
-      pip: name=boto
+      - name: Install boto using pip
+        pip: name=boto
