@@ -7,28 +7,25 @@
       state: directory
       owner: iwasakik@msuoc.net
       mode: 0775 # "u=rwx, g=r, o=r"
-
+    # conditional
     ignore_errors: true
-    changed_when: false
-    #check_mode: no
     register: add_directory
 
-  - debug: var=add_directory
+#  - debug: var=add_directory
 
   - name: Pull the html file to the www directory
     git: repo={{ repository }} dest=/usr/share/nginx/www update=yes
-
+    # conditional
     ignore_errors: true
     register: git_html
     when: "'failed:' not in add_directory"
 
   - name: Set boolean true if something failed
     set_fact: failed_git_code=true
-    ignore_errors: true
-    when: add_directory.failed == true or git_html.failed == true
+    when: "'failed: true' in add_directory" or "'failed: true' in git_html"
 
   - name: Set boolean false if nothing failed
     set_fact: failed_git_code=false
     when:
-      - "'failed:' not in add_directory"
-      - "'failed:' not in git_html"
+      - "'failed: true' not in add_directory"
+      - "'failed: true' not in git_html"
