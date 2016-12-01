@@ -6,6 +6,13 @@
     become: yes
 
     tasks:
+      - name: Gather facts
+        action: ec2_facts
+
+      - name: Conditional
+        action: debug msg="This instance is a t1.micro"
+        when: ansible_ec2_instance_type == "t1.micro"
+
       - name: Install EPEL from the website
         yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=present
 

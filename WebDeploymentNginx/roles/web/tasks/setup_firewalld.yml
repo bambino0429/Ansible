@@ -1,5 +1,8 @@
 ---
-# Start and enable firewalld and open port 80
+# Install, start and enable firewalld and then open port 80 for Nginx
+
+  - name: Install firewalld
+    yum: name=firewalld state=latest
 
   - name: Start firewalld
     service: name=firewalld state=started enabled=yes

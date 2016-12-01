@@ -1,0 +1,13 @@
+---
+# This playbook will create a snapshot of the volume
+
+  - name: Create a snapshot of an instance
+    ec2_snapshot:
+      aws_access_key: "{{ akey }}"
+      aws_secret_key: "{{ pkey }}"
+      region: {{ aws_region }}
+#      instance_id: i-0080a6f836de932ba
+      volume_id: vol-07de2f7eeede26afd
+      description: AWS backup snapshot taken on {{ ansible_date_time.date }} at {{ ansible_date_time.time }}
+#      device_name: "{{ec2_tags.tags.Name}}"
+#      ec2_tags:
