@@ -4,4 +4,3 @@
   - include: enable_epel.yml
   - include: install_boto.yml
   - include: create_snapshot.yml
-  - include: install_firewalld.yml
