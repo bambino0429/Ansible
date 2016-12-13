@@ -1,0 +1,15 @@
+---
+# This playbook will create directories necessary for IIS
+# and pull website html file from github
+
+  - name: Add oakgov directory to C Drive
+    win_file: path=C:\inetpub\wwwroot\oakgov state=directory
+
+  - name: Add log directory to C Drive
+    win_file: path=C:\sites\log state=directory
+
+  - name: Pull html file from github
+    win_get_url:
+      url: 'https://raw.githubusercontent.com/bambino0429/website/master/index.html'
+      dest: 'C:\inetpub\wwwroot\oakgov\index.html'
+      #skip_certificate_validation: true

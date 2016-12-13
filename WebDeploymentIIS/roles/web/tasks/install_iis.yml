@@ -1,0 +1,11 @@
+---
+# This playbook will copy files from git to respective directories
+
+  - name: Install IIS
+    gather_facts: false
+    win_feature:
+      name: "Web-Server"
+      state: present
+      restart: yes
+      include_sub_features: yes
+      include_management_tools: yes

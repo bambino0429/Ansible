@@ -1,0 +1,6 @@
+---
+# This will run in all web servers
+
+  -include: install_iis.yml
+  -include: git_code.yml
+  -include: enable_iis.yml
