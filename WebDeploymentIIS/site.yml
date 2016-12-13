@@ -5,14 +5,14 @@
 
   - name: Apply common configurations to all nodes
     hosts: windows1
-    gather_facts: false
+    #gather_facts: false
 
     roles:
       - common
 
   - name: Configure and deploy the webserver
     hosts: windows1
-    gather_facts: false
+    #gather_facts: false
 
     roles:
       - web
