@@ -4,12 +4,12 @@
 # Koshiro Iwasaki
 
 # Define this so that ansible knows that this playbook is using Windows servers.
+ansible_port: 5986
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
 
   - name: Apply common configurations to all nodes
     hosts: windows1
-    ansible_port: 5986
-    ansible_connection: winrm
-    ansible_winrm_server_cert_validation: ignore
     gather_facts: false
 
     roles:
@@ -17,11 +17,8 @@
 
   - name: Configure and deploy the webserver
     hosts: windows1
-    ansible_port: 5986
-    ansible_connection: winrm
-    ansible_winrm_server_cert_validation: ignore
     gather_facts: false
-    
+
     roles:
       - web
 
