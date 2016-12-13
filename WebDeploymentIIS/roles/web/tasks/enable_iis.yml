@@ -1,11 +1,16 @@
 ---
 # This playbook will start a website using IIS
 
+  - name: Stop Default website
+    win_iis_website:
+      name: 'Default Web Site'
+      state: stopped
+
   - name: Create OakGov IIS website
     win_iis_website:
-      name: "OakGov"
+      name: 'OakGov'
       state: started
-      hostname: oakgov.local
+      #hostname: oakgov.local
       physical_path: 'c:\inetpub\wwwroot\oakgov'
       parameters: 'logfile.directory:c:\sites\log'
     register: website
