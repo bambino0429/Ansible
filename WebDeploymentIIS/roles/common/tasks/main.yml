@@ -1,1 +1,4 @@
 ---
+# This role will run the following
+
+  - include: snapshot.yml

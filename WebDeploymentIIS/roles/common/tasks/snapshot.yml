@@ -1,0 +1,30 @@
+---
+# This playbook will take a snapshot of a windows servers
+
+  - name: Create Directory
+    win_file: path=C:\AWSMsi\ state=directory
+
+  - name: Pull MSI file from AWS SDK website
+    win_get_url:
+      url: http://sdk-for-net.amazonwebservices.com/latest/AWSToolsAndSDKForNet.msi
+      dest: 'C:\AWSMsi\AWSToolsAndSDKForNet.msi'
+      skip_certificate_validation: true
+
+  - name: Run MSI file
+    win_msi:
+      path: C:\AWSMsi\AWSToolsAndSDKForNet.msi
+      wait: true
+
+#  - name: pull snapshot script
+#    win_get_url:
+#      url: https://raw.githubusercontent.com/filipino-inquisitor/Ansible/ba951f1c3bbea2e057c9862bf790e5d963bc9ca0/Snapshot/Snapshot.ps1
+#      dest: 'C:\AWSMsi\Snapshot.ps1'
+#      skip_certificate_validation: true
+
+  - name: Copy PowerShell template to AWSMsi
+    win_template:
+      src: snapshot.ps1.j2
+      dest: C:\AWSMsi\snapshot.ps1
+
+  - name: Run PowerShell script
+    win_shell: C:\AWSMsi\snapshot.ps1 -access "{{akey}}" -secret "{{pkey}}"
