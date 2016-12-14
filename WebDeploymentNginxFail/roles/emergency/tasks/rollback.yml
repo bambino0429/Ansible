@@ -6,7 +6,7 @@
     ec2_remote_facts:
       aws_access_key: "{{ akey }}"
       aws_secret_key: "{{ pkey }}"
-      region: ""{{ aws_region }}""
+      region: "{{ aws_region }}"
       filters:
         instance-state-name: running
         "tag:Name": "{{ failed_servers }}"
@@ -16,7 +16,7 @@
     ec2:
       aws_secret_key: "{{ pkey }}"
       aws_access_key: "{{ akey }}"
-      region: ""{{ aws_region }}""
+      region: "{{ aws_region }}"
       instance_ids: "{{ ec2_info.instances.0.id }}"
       state: stopped
       wait: yes
