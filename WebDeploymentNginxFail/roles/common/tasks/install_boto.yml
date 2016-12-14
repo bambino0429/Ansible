@@ -1,0 +1,20 @@
+---
+# Install pip and use pip to install boto
+
+  - name: Install python pip
+    yum: name=python-pip enablerepo=epel update_cache=yes state=latest
+
+#  - name: Install python pip and dev
+#    yum: name={{ item }} enablerepo=epel update_cache=yes state=latest
+#    with_items:
+#      - python-pip
+#      - python-dev
+
+  - name: Update pip to the latest version
+    command: 'pip install --upgrade pip'
+
+  - name: Install boto using pip
+    pip: name=boto
+
+  - name: Install boto3 using pip
+    pip: name=boto3

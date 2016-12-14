@@ -1,0 +1,33 @@
+---
+# Playbook to deploy a website to RHEL servers.
+# Doing this so database servers can be added in the future.
+# Koshiro Iwasaki
+
+  - name: Apply common configurations to all nodes
+    hosts: all
+    # Make sure the privilege escalation is sudo for the credential.
+    become: yes
+
+    roles:
+      - common
+
+  - name: Configure and deploy the webserver
+    hosts: webservers
+    become: yes
+
+    roles:
+      - web
+
+#  - name: Configure and deploy the database server
+#    hosts: dbservers
+#    become: yes
+#
+#    roles:
+#      - db
+
+#  - name: In case of emergencies, revert to previous state
+#    hosts: all
+#    become: yes
+#
+#    roles:
+#      - emergency

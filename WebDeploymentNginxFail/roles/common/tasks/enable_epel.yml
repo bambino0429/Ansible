@@ -1,0 +1,11 @@
+---
+# This playbook adds EPEL repository to RHEL servers and enable it
+
+  - name: Install EPEL from the website
+    yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm state=present
+
+#  - name: Add repository
+#    yum_repository:
+#      name: epel
+#      description: EPEL YUM repo
+#      baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
