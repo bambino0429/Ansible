@@ -13,10 +13,10 @@
           "tag:Name": MSURHEL2
 
     - name: Conditional 1
-      action: debug msg="{{instances.id}}"
+      action: debug msg="{{id}}"
 
     - name: Conditional 2
-      action: debug msg="{{instances.block_device_mapping.volume_id}}"
+      action: debug msg="{{block_device_mapping.volume_id}}"
 
 #    - name: Stop the instance
 #      ec2:
