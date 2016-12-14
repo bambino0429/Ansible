@@ -13,30 +13,30 @@
     # conditional
     ignore_errors: true
     register: start_firewalld
-    when: "'failed: true' not in install_firewalld"
+    when: "'\"failed\": true' not in install_firewalld"
 
   - name: Insert firewalld rule for nginx
     firewalld: port={{ nginx_port }}/tcp permanent=true state=enabled immediate=yes
     # conditional
     ignore_errors: true
     register: insert_firewalld_rules
-    when: "'failed: true' or 'skipped: true' not in start_firewalld"
+    when: "'\"failed\": true' or 'skipped: true' not in start_firewalld"
 
   - name: Restart firewalld
     service: name=firewalld state=restarted enabled=yes
     # conditional
     ignore_errors: true
     register: restart_firewalld
-    when: "'failed: true' or 'skipped: true' not in insert_firewalld_rules"
+    when: "'\"failed\": true' or 'skipped: true' not in insert_firewalld_rules"
 
   - name: Set boolean false if nothing failed
     set_fact: failed_setup_firewalld=false
     register: setup_firewalld_success
     when:
-      - "'failed: true' not in install_firewalld"
-      - "'failed: true' not in start_firewalld"
-      - "'failed: true' not in insert_firewalld_rules"
-      - "'failed: true' not in restart_firewalld"
+      - "'\"failed\": true' not in install_firewalld"
+      - "'\"failed\": true' not in start_firewalld"
+      - "'\"failed\": true' not in insert_firewalld_rules"
+      - "'\"failed\": true' not in restart_firewalld"
 
   - name: Set boolean true if something failed
     set_fact: failed_firewalld_success=true

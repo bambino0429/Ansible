@@ -2,6 +2,11 @@
 # This playbook will stop the instance, detach the old volume,
 # create and attach the new volume, and restart the instance
 
+  - ec2_remote_facts:
+      filters:
+        instance-state-name: running
+        "tag:Name": MSURHEL2
+        
   - name: Stop the instance
     ec2:
       aws_secret_key: "{{ pkey }}"
