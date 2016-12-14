@@ -26,7 +26,7 @@
 #      - db
 
 #  - name: In case of emergencies, revert to previous state
-#    hosts: all
+#    hosts: linux1
 #    become: yes
 #
 #    roles:
