@@ -11,12 +11,13 @@
         filters:
           instance-state-name: running
           "tag:Name": MSURHEL2
+      register: ec2_info
 
     - name: Conditional 1
-      action: debug msg="{{id}}"
+      action: debug msg="{{ec2_info.instances.id}}"
 
     - name: Conditional 2
-      action: debug msg="{{block_device_mapping.volume_id}}"
+      action: debug msg="{{ec2_info.instances.block_device_mapping.volume_id}}"
 
 #    - name: Stop the instance
 #      ec2:
