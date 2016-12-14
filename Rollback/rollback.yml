@@ -11,7 +11,7 @@
         region: us-east-1
         filters:
           instance-state-name: running
-          "tag:Name": "{{ failed_servers }}"
+          "tag:Name": MSURHEL2
       register: ec2_info
 
     - name: Conditional
