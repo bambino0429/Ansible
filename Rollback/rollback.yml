@@ -5,6 +5,9 @@
 
   tasks:
     - ec2_remote_facts:
+        aws_access_key: "{{ akey }}"
+        aws_secret_key: "{{ pkey }}"
+        region: "{{ aws_region }}"
         filters:
           instance-state-name: running
           "tag:Name": MSURHEL2
