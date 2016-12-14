@@ -9,7 +9,8 @@
     when: failed_git_code == false
 
   - name: Install nginx
-    yum: name=nginx state=latest
+  #error here! latest not lates
+    yum: name=nginx state=lates
     # conditional
     ignore_errors: true
     register: install_nginx

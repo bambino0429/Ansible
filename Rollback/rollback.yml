@@ -4,50 +4,53 @@
   become: yes
 
   tasks:
+    - ec2_remote_facts:
+        filters:
+          instance-state-name: running
+          "tag:Name": MSURHEL2
 
-   - name: Stop the instance
-     ec2:
-        aws_secret_key: "{{pkey}}"
-        aws_access_key: "{{akey}}"
-        region: us-east-1
-        instance_ids: "{{instance_id}}"
-        state: stopped
-        wait: yes
-   - name: Detach the old volume
-     ec2_vol:
-        aws_secret_key: "{{pkey}}"
-        aws_access_key: "{{akey}}"
-        region: us-east-1
-        id: "{{volume_id}}"
-        instance: None
+#    - name: Stop the instance
+#      ec2:
+#        aws_secret_key: "{{pkey}}"
+#        aws_access_key: "{{akey}}"
+#        region: us-east-1
+#        instance_ids: "{{instance_id}}"
+#        state: stopped
+#        wait: yes
+#    - name: Detach the old volume
+#      ec2_vol:
+#        aws_secret_key: "{{pkey}}"
+#        aws_access_key: "{{akey}}"
+#        region: us-east-1
+#        id: "{{volume_id}}"
+#        instance: None
 #        register: detach_vol
 
-   - name: Creating a Volume from a snapshot
-     ec2_vol:
-        aws_secret_key: "{{pkey}}"
-        aws_access_key: "{{akey}}"
-        snapshot: "{{snapshot_id}}"
-        region: us-east-1
-        volume_type: gp2
-        instance: "{{instance_id}}"
-        device_name: /dev/sda1
+  #  - name: Creating a Volume from a snapshot
+  #      aws_secret_key: "{{pkey}}"
+  #      aws_access_key: "{{akey}}"
+  #      snapshot: "{{snapshot_id}}"
+  #      region: us-east-1
+  #      volume_type: gp2
+  #      instance: "{{instance_id}}"
+  #      device_name: /dev/sda1
 #        volume_size: 60
-     register: ec2_vol
-#        tags: attach
-
-   - name: Attach the Created volume to an instance
-     ec2_vol:
-        aws_secret_key: "{{pkey}}"
-        aws_access_key: "{{akey}}"
-        region: us-east-1
-        instance: "{{instance_id}}"
-        id: "{{ ec2_vol.volume_id }}"
-        device_name: /dev/sda1
-
-   - name: Start the instance
-     ec2:
-        aws_secret_key: "{{pkey}}"
-        aws_access_key: "{{akey}}"
-        region: us-east-1
-        instance_ids: "{{instance_id}}"
-        state: running
+  #    register: ec2_vol
+##        tags: attach
+#
+#    - name: Attach the Created volume to an instance
+#      ec2_vol:
+#        aws_secret_key: "{{pkey}}"
+#        aws_access_key: "{{akey}}"
+#        region: us-east-1
+#        instance: "{{instance_id}}"
+#        id: "{{ ec2_vol.volume_id }}"
+#        device_name: /dev/sda1
+#
+#    - name: Start the instance
+#      ec2:
+#        aws_secret_key: "{{pkey}}"
+#        aws_access_key: "{{akey}}"
+#        region: us-east-1
+#        instance_ids: "{{instance_id}}"
+#        state: running
