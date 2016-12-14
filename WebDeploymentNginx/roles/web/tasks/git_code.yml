@@ -12,7 +12,9 @@
     register: add_directory
 
 #  - debug: var=add_directory
-
+  - name: Install git
+    yum: name=git state=latest
+    
   - name: Pull the html file to the www directory
     git: repo={{ repository }} dest=/usr/share/nginx/www update=yes
     # conditional
