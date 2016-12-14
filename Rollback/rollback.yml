@@ -12,6 +12,12 @@
           instance-state-name: running
           "tag:Name": MSURHEL2
 
+    - name: Conditional 1
+      action: debug msg="{{instances.id}}"
+
+    - name: Conditional 2
+      action: debug msg="{{instances.block_device_mapping.volume_id}}"
+
 #    - name: Stop the instance
 #      ec2:
 #        aws_secret_key: "{{pkey}}"
