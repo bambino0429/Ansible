@@ -4,6 +4,19 @@
   become: yes
 
   tasks:
+    - name: Gather information about the failed servers
+      ec2_remote_facts:
+        aws_access_key: "{{ akey }}"
+        aws_secret_key: "{{ pkey }}"
+        region: "{{ aws_region }}"
+        filters:
+          instance-state-name: running
+          "tag:Name": "{{ failed_servers }}"
+      register: ec2_info
+
+    - name: Conditional
+      action: debug msg=" ec2_info.instances.0.block_device_mapping.volume_id "
+
     - name: Stop the instance
       ec2:
         aws_secret_key: "{{pkey}}"
