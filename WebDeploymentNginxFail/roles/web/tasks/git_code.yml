@@ -17,30 +17,30 @@
     yum: name=git state=latest
     # conditional
     ignore_errors: true
-    register: git_html
-    when: "'failed: true' not in add_directory"
-    
+    register: install_git
+    when: "'\"failed\": true' not in add_directory"
+
   - name: Pull the html file to the www directory
     git: repo={{ repository }} dest=/usr/share/nginx/www update=yes
     # conditional
     ignore_errors: true
     register: git_html
-    when: "'failed: true' not in add_directory"
+    when: "'\"failed\": true' not in install_git"
 
 #  - name: Set boolean true if add_dictionary failed
 #    set_fact: failed_git_code=true
-#    when: "'failed: true' in add_directory"
+#    when: "'\"failed\": true' in add_directory"
 #
 #  - name: Set boolean true if git_html failed
 #    set_fact: failed_git_code=true
-#    when: "'failed: true' in git_html"
+#    when: "'\"failed\": true' in git_html"
 
   - name: Set boolean true if something failed
     set_fact: failed_git_code=true
-    when: "'"failed": true' in add_directory or '"failed": true' in git_html"
+    when: "'\"failed\": true' in add_directory or '\"failed\": true' in git_html"
 
   - name: Set boolean false if nothing failed
     set_fact: failed_git_code=false
     when:
-      - "'failed: true' not in add_directory"
-      - "'failed: true' not in git_html"
+      - "'\"failed\": true' not in add_directory"
+      - "'\"failed\": true' not in git_html"
