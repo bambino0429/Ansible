@@ -15,7 +15,7 @@
       register: ec2_info
 
     - name: Conditional
-      action: debug msg=" ec2_info.instances.0.block_device_mapping.volume_id "
+      action: debug msg=" {{ec2_info.instances.0.block_device_mapping./dev/sda1.volume_id}} "
 
     - name: Stop the instance
       ec2:
