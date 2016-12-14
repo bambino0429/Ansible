@@ -14,7 +14,7 @@
       register: ec2_info
 
     - name: Conditional 1
-      action: debug msg="{{ec2_info.instances}}"
+      action: debug msg="{{ec2_info.instances.id}}"
 
 #    - name: Conditional 2
 #      action: debug msg="{{ec2_info.instances.block_device_mapping.volume_id}}"
