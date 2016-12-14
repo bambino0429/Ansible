@@ -5,3 +5,4 @@ aws_region: us-east-1
 job_description: "Web Deployment with Nginx"
 nginx_port: 80
 repository: https://github.com/bambino0429/website.git
+failed_servers: MSURHEL2

@@ -3,13 +3,13 @@
 # Doing this so database servers can be added in the future.
 # Koshiro Iwasaki
 
-#  - name: Apply common configurations to all nodes
-#    hosts: all
+  - name: Apply common configurations to all nodes
+    hosts: all
     # Make sure the privilege escalation is sudo for the credential.
-#    become: yes
+    become: yes
 
-#    roles:
-#      - common
+    roles:
+      - common
 
   - name: Configure and deploy the webserver
     hosts: webservers
@@ -25,9 +25,9 @@
 #    roles:
 #      - db
 
-#  - name: In case of emergencies, revert to previous state
-#    hosts: linux1
-#    become: yes
-#
-#    roles:
-#      - emergency
+  - name: In case of emergencies, revert to previous state
+    hosts: linux1
+    become: yes
+
+    roles:
+      - emergency
